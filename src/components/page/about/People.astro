@@ -1,0 +1,93 @@
+---
+import SectionPadding from "@/components/section/SectionPadding.astro";
+import mainConfig from "@/config/main";
+import pageConfig from "@/config/pages/about";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Avatar } from "@/components/my-ui/Avatar.tsx";
+
+import { cn } from "@/lib/utils";
+import { Icon } from "astro-icon/components";
+---
+<section
+  class:list={[
+    "col-[content]",
+    "flex flex-col",
+  ]}
+>
+  <SectionPadding/>
+  <!-- <h1></h1> -->
+  <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
+    Join the pack!
+  </h1>
+  <SectionPadding/>
+  <div
+    class:list={[
+      "grid",
+      "px-4 xl:px-0 py-8",
+      "justify-center",
+      "flex gap-6 flex-col md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-2",
+    ]}
+  >
+    {
+      [
+        pageConfig.people["pablo.garce"],
+        pageConfig.people["carla.campopiano"],
+        pageConfig.people["cesar.campopiano"],
+        pageConfig.people["cesar.castellanos"],
+        pageConfig.people["joaquin.rubio"],
+        pageConfig.people["laurel.luna"],
+      ].map((card) => (
+        <Card
+          className={cn(
+            "bg-card",
+            "text-shadow-md/5",
+            "gap-2",
+            "flex flex-col 2xl:grid xl:grid-cols-[2fr_3fr]",
+          )}
+        >
+          <CardHeader className="flex flex-col gap-4">
+            <div class="flex flex-col gap-4 w-full">
+              <Avatar
+                src={card.avatar.src}
+                alt={card.avatar.alt}
+                fallback={card.avatar.fallback}
+                client:only="react"
+                className="aspect-square w-full h-fit rounded-sm"
+              />
+              <div class="flex flex-row-reverse gap-2">
+                {card.links.map((link) => (
+                  <a href={link.href}>
+                    <Icon name={link.icon} class="aspect-square" />
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <CardTitle className="text-2xl">{card.title}</CardTitle>
+              <CardDescription className="text-md">
+                {card.subtitle}
+              </CardDescription>
+            </div>
+          </CardHeader>
+          <CardContent className={cn("text-lg/8", "text-shadow-xs/5")}>
+            <p>{card.description}</p>
+          </CardContent>
+          <!-- <CardFooter className="col-span-2 flex flex-row gap-2 justify-end h-full items-end ">
+            {card.links.map((link) => (
+              <a href={link.href}>
+                <Icon name={link.icon} class="aspect-square" />
+              </a>
+            ))}
+          </CardFooter> -->
+        </Card>
+      ))
+    }
+  </div>
+</section>

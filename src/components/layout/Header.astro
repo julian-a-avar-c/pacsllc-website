@@ -1,0 +1,142 @@
+---
+import mainConfig from "@/config/main";
+
+import { Icon } from "astro-icon/components";
+import { HeaderNavSheet } from "@/components/layout/HeaderNavSheet";
+import { HeaderNav } from "@/components/layout/HeaderNav";
+import Content from "../section/Content.astro";
+import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
+import { SearchBar } from "./SearchBar";
+
+type Props = {
+  class: string;
+};
+
+const { class: className } = Astro.props;
+---
+
+<header
+  class:list={["col-[fullbleed] grid grid-cols-subgrid", "static", className]}
+>
+  <Content
+    class={cn(
+      "bg-foreground text-background",
+      "static",
+      "text-sm",
+      "hidden sm:grid",
+    )}
+    containerClass={cn("gap-4", "relative")}
+  >
+    <h1
+      class:list={["font-extrabold uppercase", "sticky top-0", "text-center"]}
+    >
+      {mainConfig.title}
+    </h1>
+    <address class="not-italic static">
+      <ul
+        class:list={[
+          "hidden",
+          "font-bold",
+          "sm:flex flex-col sm:flex-row gap-y-2 gap-x-4 items-center",
+        ]}
+      >
+        {
+          Object.entries(mainConfig.links)
+            .filter(([type, link]) =>
+              ["linkedin", "instagram", "phone", "email", "location"].includes(
+                type,
+              ),
+            )
+            .map(([type, link]) => {
+              if (link.href) {
+                return (
+                  <li>
+                    <a
+                      href={link.href}
+                      class:list={[
+                        "flex gap-1 items-center",
+                        "hover:underline",
+                      ]}
+                    >
+                      <Icon name={link.icon} />
+                      {link.value}
+                    </a>
+                  </li>
+                );
+              } else {
+                return (
+                  <li class="flex gap-1 items-center">
+                    <Icon name={link.icon} />
+                    {link.value}
+                  </li>
+                );
+              }
+            })
+        }
+      </ul>
+    </address>
+  </Content>
+
+  <section
+    class:list={[
+      "py-4",
+      "col-[fullbleed]",
+      "grid grid-cols-subgrid",
+      "sticky top-0",
+      "bg-card/20 backdrop-blur-xl backdrop-brightness-[100%] backdrop-grayscale-[20%]",
+      "rounded-b-xl",
+      "shadow-lg",
+    ]}
+  >
+    <div
+      class:list={[
+        "col-[content]",
+        "flex items-stretch justify-between gap-y-2 gap-x-4",
+        "bg-transparent",
+        "pr-4 sm:px-0",
+      ]}
+    >
+      <a class="flex gap-4 lg:gap-8 2xl:gap-4 items-center" href="/">
+        <div class="flex gap-4 [&>*]:h-fit items-center">
+          <!-- 300/300 ~= 48/48 -->
+          <img
+            src="/images/logo/pacs_icon_300x300.png"
+            alt="PACS LLC Logo"
+            width="48"
+            height="48"
+            class="hidden sm:block"
+          />
+          <!-- 350/300 ~= 48/32 -->
+          <img
+            src="/images/logo/pacs_icon_350x300.png"
+            alt="PACS LLC Logo"
+            width="48"
+            height="32"
+            class="block pl-4 sm:hidden"
+          />
+        </div>
+        <HeaderNav class="hidden xl:block" client:only="react" />
+      </a>
+      <div class="flex gap-4 items-center">
+        <SearchBar class="hidden xl:block" client:only="react" />
+        <a href={mainConfig.links.email.href}>
+          <Button
+            size="lg"
+            className={cn(
+              "hidden md:block",
+              "text-lg uppercase hover:cursor-pointer",
+            )}
+            client:only="react"
+          >
+            Get In Touch!
+          </Button>
+        </a>
+        <HeaderNavSheet
+          class={cn("block xl:hidden", "h-full aspect-square")}
+          client:only="react"
+        />
+      </div>
+    </div>
+  </section>
+</header>

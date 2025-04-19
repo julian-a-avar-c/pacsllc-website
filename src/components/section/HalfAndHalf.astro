@@ -1,0 +1,108 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import mainConfig from "@/config/main";
+import pageConfig from "@/config/pages/index";
+
+import { Icon } from "astro-icon/components";
+import Header from "@/components/layout/Header.astro";
+import { Button } from "@/components/ui/button";
+import Hero from "@/components/page/index/Hero.astro";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import Halfbleed from "@/components/section/Halfbleed.astro";
+import SectionPadding from "@/components/section/SectionPadding.astro";
+import { Accordion } from "@/components/my-ui/accordion";
+import type { Item } from "@/config/pages/products";
+
+type Props = {
+  reverse?: boolean;
+  class?: string;
+  image: {
+    src: string;
+    alt: string;
+    caption?: string;
+    className?: string;
+  };
+  title: string;
+  description: string;
+  list: {
+    className?: string;
+    items: Item[];
+  };
+};
+const {
+  class: className,
+  reverse,
+  image,
+  title,
+  description,
+  list,
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    "grid grid-cols-2",
+    // pt-8 sm:pt-16 lg:pt-24 2xl:pt-32
+    "gap-8 sm:gap-16 lg:gap-20 2xl:gap-24",
+    "col-[content]",
+    "text-xl",
+    className,
+  ]}
+>
+  <SectionPadding class="col-[1/-1]" />
+  <!-- <p class="text-center font-bold uppercase col-[1/-1]">
+            Our Services
+        </p> -->
+  <img
+    alt={image.alt}
+    src={image.src}
+    class:list={[
+      "shadow-lg",
+      "col-[1/-1] lg:col-[1/2]",
+      "aspect-video w-full object-cover",
+      "sm:rounded-lg",
+      image.className,
+    ]}
+  />
+  <div
+    class="px-4 sm:px-0 flex flex-col gap-4 sm:gap-8 col-[1/-1] lg:col-[2/-1]"
+  >
+    <h1 class="text-2xl sm:text-3xl font-bold">
+      {title}
+    </h1>
+    <Separator className="w-[50%] sm:w-full" />
+    <p>
+      {description}
+    </p>
+    <ul
+      class:list={[
+        "[&>li]:grid [&>li]:grid-cols-[min-content_1fr] [&>li]:items-center [&>li]:gap-6",
+        "sm:[&>li]:gap-4",
+        "[&>li>*]:first:text-3xl",
+        "flex gap-2 flex-col",
+        "font-bold",
+      ]}
+    >
+      {
+        // list.items.map((item) => (
+        //   <li>
+        //     <Icon name={item.icon} />
+        //     <span>{item.title}</span>
+        //     <!-- {item.description && <span>{item.description}</span>} -->
+        //   </li>
+        // ))
+      }
+      <Accordion list={list} client:only="react" />
+    </ul>
+  </div>
+</section>

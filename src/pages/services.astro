@@ -1,0 +1,41 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import config from "@/config/main";
+import pageConfig from "@/config/pages/index";
+
+import { Icon } from "astro-icon/components";
+import Header from "@/components/layout/Header.astro";
+import { Button } from "@/components/ui/button";
+import Hero from "@/components/section/Hero.astro";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import Halfbleed from "@/components/section/Halfbleed.astro";
+import CardStack from "@/components/page/about/CardStack.astro";
+---
+
+<Layout title={config.shortTitle} class="w-full grid-rows-[auto_8px_auto]">
+  <Header class="row-[1/3] z-10" />
+  <main
+    class:list={[
+      "col-[fullbleed] row-[2/4]",
+      "grid grid-cols-subgrid",
+      "relative",
+    ]}
+  >
+    <div class="w-full h-[8px]"></div>
+    <Hero
+      title="Services"
+      nav={[{ node: "PACS LLC", href: "/" }, { node: "Services" }]}
+    />
+  </main>
+  <footer class:list={["px-4 pb-4 pt-2", "col-[fullbleed]", ""]}>f</footer>
+</Layout>

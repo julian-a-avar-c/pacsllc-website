@@ -1,0 +1,30 @@
+---
+/**
+ * A section with a grid-line going through the middle. Fullbleed length.
+ */
+type Props = {
+  class?: string;
+  containerClass?: string;
+};
+const { class: className, containerClass } = Astro.props;
+---
+
+<section class:list={["col-[fullbleed]", "grid grid-cols-subgrid", className]}>
+  <slot />
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns:
+      [fullbleed-start leftbleed-start]
+      var(--bleed-width)
+      [content-start content-left-start]
+      calc(var(--content-width) / 2)
+      [content-left-end leftbleed-end rightbleed-start content-right-start]
+      calc(var(--content-width) / 2)
+      [content-right-end content-end]
+      var(--bleed-width)
+      [rightbleed-end fullbleed-end];
+  }
+</style>

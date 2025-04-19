@@ -1,10 +1,180 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 
-import config from "@/config/main";
+import mainConfig from "@/config/main";
 import pageConfig from "@/config/pages/index";
+
+import { cn } from "@/lib/utils";
+
+import { Icon } from "astro-icon/components";
+import Header from "@/components/layout/Header.astro";
+import { Button } from "@/components/ui/button";
+import Hero from "@/components/page/index/Hero.astro";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import Halfbleed from "@/components/section/Halfbleed.astro";
+import TriBrutal from "@/components/section/TriBrutal.astro";
+import SectionPadding from "@/components/section/SectionPadding.astro";
+import HalfAndHalf from "@/components/section/HalfAndHalf.astro";
+import Fullbleed from "@/components/section/Fullbleed.astro";
 ---
 
-<Layout title={config.shortTitle}>
-  Hello World
+<Layout
+  title={mainConfig.shortTitle}
+  class="w-full grid-rows-[auto_8px_auto] static"
+>
+  <Header class="row-[1/3] z-10" />
+  <main
+    class:list={[
+      "col-[fullbleed] row-[2/4]",
+      "grid grid-cols-subgrid",
+      "static",
+    ]}
+  >
+    <div class="w-full h-[8px]"></div>
+    <!-- Hero -->
+    <Hero />
+
+    <HalfAndHalf
+      image={{
+        alt: "Image description",
+        src: "/images/IMG_2316.JPEG",
+      }}
+      title="Innovative solutions for complex energy problems"
+      description="Our team is cost effective, providing analysis of investment and custom solutions."
+      list={{ items: mainConfig.nav.services }}
+    />
+
+    <TriBrutal>
+      <img
+        slot="first"
+        src="/images/ee403138-dbe8-4cbe-aa61-dd9566177524.jpeg"
+        class:list={[
+          "col-[fullbleed] xl:col-[leftbleed] xl:row-[1/3]",
+          "aspect-[2/1] xl:aspect-[none]",
+          "xl:h-full",
+          "object-[50%_100%] 2xl:object-[50%_20%] bg-fixed object-cover w-full",
+        ]}
+      />
+      <Fragment slot="second">
+        <!-- 42px ~<= 5xl -->
+        <h1 class="text-[42px] sm:text-6xl">PACS Mission</h1>
+        <p class="">
+          Our solutions are proven and designed based on the best practices in
+          the fine art of engineering and are backed by our long experience in
+          field work. We build our systems in a modular fashion and deliver them
+          fully factory tested prior to shipping for rapid commissioning. Our
+          turnkey modular approach results in successful quick implementation
+          with an efficient high rate of return on investment.
+        </p>
+      </Fragment>
+      <Fragment slot="third">
+        <!-- 42px ~<= 5xl -->
+        <h1 class="text-[42px] sm:text-6xl">PACS Vision</h1>
+        <p class="">
+          PACS understands that having a single source of project support
+          simplifies and expedites decision-making, coordination, and execution.
+          PACS consolidates responsibilities for engineering, procurement,
+          installation inspection and start-up assistance, and can provide
+          turnkey blending and manufacturing solutions. From the outskirts of
+          New York City we serve the world.
+        </p>
+      </Fragment>
+    </TriBrutal>
+
+    <HalfAndHalf
+      image={{
+        className: "object-[50%_100%]",
+        // src: "/images/IMG_2304-1.JPEG",
+        src: "/images/WhatsApp Image 2025-02-15 at 6.47.09 PM.jpeg",
+        alt: "",
+      }}
+      title="Liquid Lubricants"
+      description="PACS delivers modular automation and logistics solutions engineered to slash energy spend, optimize labor, and adapt seamlessly to shifting demands. Built for agile industries: scalable, portable, and operator-free."
+      list={{
+        items: mainConfig.nav.products.liquidLubricants.map((item) => ({
+          icon: "fa6-solid:chevron-right",
+          ...item,
+        })),
+      }}
+    />
+
+    <HalfAndHalf
+      image={{
+        src: "/images/IMG_5180.jpeg",
+        alt: "",
+      }}
+      title="Grease Industry"
+      description="PACS delivers modular automation and logistics solutions engineered to slash energy spend, optimize labor, and adapt seamlessly to shifting demands. Built for agile industries: scalable, portable, and operator-free."
+      list={{
+        items: mainConfig.nav.products.greases.map((item) => ({
+          icon: "fa6-solid:chevron-right",
+          ...item,
+        })),
+      }}
+      reverse={true}
+    />
+    <Fullbleed
+      class={cn("flex flex-col lg:grid lg:grid-cols-5 2xl:grid-cols-7")}
+    >
+      <aside
+        class:list={[
+          "lg:col-[1/3]",
+          "flex flex-col xl:grid xl:grid-cols-subgrid",
+        ]}
+      >
+        <div class="xl:col-[2/-1]">
+          <h1>Articles</h1>
+          <p class="px-4 sm:px-0">
+            PACS LLC presents an innovative line of products ideal to satisfy
+            the needs of a dynamic and flexible market. Saving energy costs and
+            maximizing manpower productivity returns via high degree of
+            affordable modular automation and streamlining logistics.
+          </p>
+        </div>
+      </aside>
+      <div
+        class:list={[
+          "lg:col-[3/8]",
+          "flex lg:grid xl:grid-cols-2",
+          "px-8 gap-8",
+          "bg-[url('/images/IMG_2256.JPEG')]",
+        ]}
+      >
+        {
+          [
+            {
+              title: "Navigating Challenges with Sustainable Solutions",
+              author: "Pablo Garce",
+              description:
+                "By embracing sustainable solutions tailored to their specific needs, organizations can drive efficiency, fortify operations against uncertainties, and pave the way for a brighter future.",
+            },
+            {
+              title: "Navigating Challenges with Sustainable Solutions",
+              author: "Pablo Garce",
+              description:
+                "By embracing sustainable solutions tailored to their specific needs, organizations can drive efficiency, fortify operations against uncertainties, and pave the way for a brighter future.",
+            },
+          ].map((card) => (
+            <Card>
+              <CardHeader>
+                <CardTitle>{card.title}</CardTitle>
+                <CardDescription>{card.author}</CardDescription>
+              </CardHeader>
+              <CardContent>{card.description}</CardContent>
+            </Card>
+          ))
+        }
+      </div>
+    </Fullbleed>
+  </main>
+  <footer class:list={["px-4 pb-4 pt-2", "col-[fullbleed]", ""]}>f</footer>
 </Layout>

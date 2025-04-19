@@ -1,3 +1,6 @@
+import productsConfig from "@/config/pages/products";
+import servicesConfig from "@/config/pages/services";
+
 export type Card = {
   icon: string | null;
   title: string;
@@ -28,35 +31,72 @@ export type Page = {
 //     articles: PageArticles;
 //   };
 
-export default {
-  title: "Processing & Automation Consultancy Solutions",
+type ContactInfo = {
+  icon?: string;
+  value?: string;
+  href?: string;
+};
+
+type Config = {
+  title: string;
+  shortTitle: string;
+  links: {
+    [type in
+      | "site"
+      | "linkedin"
+      | "instagram"
+      | "phone"
+      | "email"
+      | "location"]: ContactInfo;
+  };
+  nav: {
+    services: typeof servicesConfig.services;
+    products: {
+      liquidLubricants: typeof productsConfig.products.liquidLubricants;
+      greases: typeof productsConfig.products.greases;
+    };
+  };
+};
+
+const config: Config = {
+  title: "Process & Automation Consultancy Solutions",
   shortTitle: "PACS LLC",
-  links: [
-    { type: "site", href: "https://pacsllc.net" },
-    {
-      type: "linkedin",
+  links: {
+    site: {
+      href: "https://pacsllc.net",
+    },
+    linkedin: {
       icon: "fa6-brands:linkedin",
       value: "pacsllc",
       href: "https://www.linkedin.com/company/pacsllc/",
     },
-    {
-      type: "instagram",
+    instagram: {
       icon: "fa6-brands:instagram",
       value: "pacs_llc",
       href: "https://www.instagram.com/pacs_llc/",
     },
-    {
-      type: "phone",
+    phone: {
       icon: "fa6-solid:phone",
       value: "(773) 474-9701",
       href: "tel:+17734749701",
     },
-    {
-      type: "email",
+    email: {
       icon: "fa6-solid:envelope",
       value: "info@pacsllc.net",
       href: "mailto:info@pacsllc.net",
     },
-    { type: "location", icon: "fa6-solid:map-location", value: "NY / NJ" }, // FIX
-  ],
+    location: {
+      icon: "fa6-solid:map-location",
+      value: "NY / NJ",
+    },
+  },
+  nav: {
+    services: servicesConfig.services,
+    products: {
+      liquidLubricants: productsConfig.products.liquidLubricants,
+      greases: productsConfig.products.greases,
+    },
+  },
 };
+
+export default config;

@@ -1,20 +1,14 @@
 import type { Page, Card } from "@/config/main";
+import mainConfig from "@/config/main";
+import type { Item } from "@/config/pages/products";
 
 type Config = Page & {
   name: "index";
-  landingHero: {
-    title: string;
-    buttons: {
-      name: string;
-      value: string;
-      href: string;
-    }[];
-  };
   cards: Card[];
   services: {
     title: string;
     description: string;
-    items: Card[];
+    items: (Item & { icon: string })[];
   };
   content: {
     mission: { title: string; content: string };
@@ -23,33 +17,13 @@ type Config = Page & {
   products: {
     title: string;
     description: string;
-    items: Card[];
+    items: (Item & { icon: string })[];
   };
 };
 
 export default {
   name: "index",
   href: "/",
-  landingHero: {
-    title: "",
-    buttons: [
-      {
-        name: "button",
-        value: "Talk to Sales",
-        href: "mailto:info@pacsllc.net",
-      },
-      {
-        name: "connectOnLinkedin",
-        value: "Connect on LinkedIn",
-        href: "https://www.linkedin.com/company/pacsllc/",
-      },
-      {
-        name: "connectOnLinkedinShort",
-        value: "Connect!",
-        href: "https://www.linkedin.com/company/pacsllc/",
-      },
-    ],
-  },
   cards: [
     {
       icon: "fa6-solid:circle-check",
@@ -74,32 +48,16 @@ export default {
     title: "Services",
     description:
       "Distinctio fugiat dolor, nesciunt pariatur excepturi consectetur consequatur ipsum eum, eius quos perspiciatis ex nisi laudantium. Optio deleniti mollitia molestiae.\nSimilique natus sed tempora rerum deleniti mollitia dicta doloribus quo.",
-    items: [
-      {
-        icon: "fa6-solid:angle-right",
-        title: "Service 1",
-        description:
-          "Veniam exercitation eiusmod nostrud nisi nulla ex anim reprehenderit qui. Elit laboris est dolore commodo adipisicing proident incididunt velit elit qui ad excepteur proident ut. Consectetur incididunt enim et est consequat. Dolor dolore do quis mollit commodo voluptate ut incididunt magna culpa.",
-      },
-      {
-        icon: "fa6-solid:angle-right",
-        title: "Service 2",
-        description:
-          "Laborum fugiat fugiat commodo laborum ea exercitation non Lorem. Eu ad est laborum laboris voluptate occaecat consectetur proident ad. Reprehenderit amet sunt consequat nisi id veniam elit incididunt elit. Labore ut consectetur amet eu consequat pariatur sit laborum Lorem ipsum veniam nulla ad. Laborum consectetur occaecat aliqua pariatur.",
-      },
-      {
-        icon: "fa6-solid:angle-right",
-        title: "Service 3",
-        description:
-          "Labore fugiat nulla Lorem in pariatur dolor aliquip qui eu dolor. Fugiat incididunt non anim. Nisi quis enim incididunt velit excepteur ex officia qui reprehenderit qui eiusmod do duis voluptate id. Ea Lorem culpa esse laboris qui. In occaecat eiusmod cupidatat commodo labore excepteur occaecat.",
-      },
-    ],
+    items: mainConfig.nav.services.map((service) => ({
+      ...service,
+      icon: "fa6-solid:angle-right",
+    })),
   },
   content: {
     mission: {
       title: "PACS Mission",
       content:
-        " Our solutions are proven and designed based on the best practices in the fine art of engineering and are backed by our long experience in field work. We build our systems in a modular fashion and deliver them fully factory tested prior to shipping for rapid commissioning. Our turnkey modular approach results in successful quick implementation with an efficient high rate of return on investment.",
+        "Our solutions are proven and designed based on the best practices in the fine art of engineering and are backed by our long experience in field work. We build our systems in a modular fashion and deliver them fully factory tested prior to shipping for rapid commissioning. Our turnkey modular approach results in successful quick implementation with an efficient high rate of return on investment.",
     },
     vision: {
       title: "PACS Vision",
@@ -112,24 +70,11 @@ export default {
     description: `<p>PACS delivers modular automation and logistics solutions engineered to slash energy spend, optimize labor, and adapt seamlessly to shifting demands. Built for agile industries: scalable, portable, and operator-free.</p>
         <p><em>Automation simplified. Productivity amplified.</em><p>`,
     items: [
-      {
-        icon: "fa6-solid:angle-right",
-        title: "RDU",
-        description:
-          "Fully automated decanting—zero operators needed. Self-identifies barcodes, precision-aligns lance with drum bung.",
-      },
-      {
-        icon: "fa6-solid:angle-right",
-        title: "C3BU",
-        description:
-          "Skid-mounted lubricant blender. Container-portable, operator-free blending—deploy anywhere, anytime.",
-      },
-      {
-        icon: "fa6-solid:angle-right",
-        title: "ARCU",
-        description:
-          "High-temp efficiency without hot oil systems. Slashes energy costs in thermal processes.",
-      },
-    ],
+      ...mainConfig.nav.products.liquidLubricants,
+      ...mainConfig.nav.products.greases,
+    ].map((service) => ({
+      ...service,
+      icon: "fa6-solid:angle-right",
+    })),
   },
 } satisfies Config;

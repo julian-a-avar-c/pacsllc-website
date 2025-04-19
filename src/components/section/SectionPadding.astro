@@ -1,0 +1,8 @@
+---
+type Props = {
+  class?: string;
+};
+const { class: className } = Astro.props;
+---
+
+<div class:list={["pt-8 sm:pt-16 lg:pt-24 2xl:pt-32", className]}></div>

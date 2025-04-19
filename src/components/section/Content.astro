@@ -1,0 +1,21 @@
+---
+type Props = {
+  class?: string;
+  containerClass?: string;
+};
+const { class: className, containerClass } = Astro.props;
+---
+
+<section
+  class:list={["col-[fullbleed]", "py-2", "grid grid-cols-subgrid", className]}
+>
+  <div
+    class:list={[
+      "col-[content]",
+      "flex flex-col lg:flex-row justify-between items-center",
+      containerClass,
+    ]}
+  >
+    <slot />
+  </div>
+</section>

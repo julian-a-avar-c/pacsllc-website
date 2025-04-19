@@ -1,0 +1,292 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import SectionPadding from "@/components/section/SectionPadding.astro";
+
+import mainConfig from "@/config/main";
+import pageConfig from "@/config/pages/index";
+
+import { Icon } from "astro-icon/components";
+import Header from "@/components/layout/Header.astro";
+import { HeroCarousel } from "@/components/page/index/HeroCarousel";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+type Props = {
+  class?: string;
+};
+const { class: className } = Astro.props;
+---
+
+<section
+  class:list={[
+    "col-[fullbleed]",
+    "grid grid-cols-subgrid",
+    "min-h-screen",
+    // "bg-[url(/images/IMG_2304-1.JPEG)] bg-[50%_20%] bg-fixed bg-cover",
+    "bg-[url(/images/IMG_2252.JPEG)] bg-[50%_20%] bg-fixed bg-cover",
+    "static",
+  ]}
+>
+  <SectionPadding class:list={["col-[content]"]} />
+
+  <div
+    class:list={[
+      "col-[content]",
+      "w-full",
+      "grid lg:grid-cols-8 xl:grid-cols-9",
+      "static",
+    ]}
+  >
+    <Card
+      className={cn(
+        "lg:col-[1/6] xl:col-[1/5]",
+        "w-full h-full",
+        "rounded-lg",
+        "px-4 py-10 md:px-8 md:py-14 xl:px-12 xl:py-18",
+        "gap-8",
+        "static",
+      )}
+    >
+      <CardHeader className={cn("gap-4", "static")}>
+        <CardTitle>
+          <img
+            src="/images/logo/pacs_logo.png"
+            alt="PACS Logo"
+            class:list={["w-full h-full object-cover", "relative -left-1"]}
+          />
+        </CardTitle>
+
+        <CardDescription
+          className={cn(
+            "text-foreground",
+            "relative -top-12 sm:-top-18 md:-top-20 lg:-top-17 xl:-top-13 2xl:-top-17",
+            "grid grid-cols-12",
+            "gap-y-4",
+          )}
+        >
+          <p class:list={["text-lg sm:text-xl lg:text-sm", "col-[1/10]"]}>
+            PACS provides consulting services and industrial innovative
+            engineering solutions.
+          </p>
+          <p class:list={["text-lg sm:text-xl lg:text-sm", "col-[1/-1]"]}>
+            PACS is a provider of blending and manufacturing plant designs,
+            equipment and turnkey projects for oil and gas companies around the
+            world.
+          </p>
+        </CardDescription>
+      </CardHeader>
+
+      <!-- <Separator /> -->
+
+      <CardContent>
+        <HeroCarousel data={pageConfig.cards} client:only="react" />
+      </CardContent>
+
+      <CardFooter className={cn("flex-col", "gap-16")}>
+        <div
+          class:list={[
+            "flex",
+            "flex-col sm:flex-row xl:flex-col",
+            "gap-4",
+            "justify-stretch sm:justify-between",
+            "w-full",
+          ]}
+        >
+          <a
+            href={mainConfig.links.phone.href}
+            class:list={["inline sm:hidden"]}
+          >
+            <Button className={cn("w-full", "py-8")} client:only="react">
+              <Icon name={mainConfig.links.phone.icon} />
+              <span class:list={["text-lg"]}>Call Sales</span>
+            </Button>
+          </a>
+
+          <a
+            href={mainConfig.links.email.href}
+            class:list={["hidden sm:inline"]}
+          >
+            <Button
+              className={cn("w-full", "px-6 py-8 lg:py-6")}
+              client:only="react"
+            >
+              <Icon name={mainConfig.links.email.icon} />
+              <span class:list={["text-lg", "hidden lg:inline 2xl:hidden"]}
+                >Talk</span
+              >
+              <span
+                class:list={[
+                  "text-lg",
+                  "hidden sm:inline lg:hidden 2xl:inline",
+                ]}>Talk to Sales</span
+              >
+            </Button>
+          </a>
+
+          <a class:list={[]} href={mainConfig.links.linkedin.href}>
+            <Button
+              className={cn("w-full", "py-8 sm:px-6 lg:py-6")}
+              client:only="react"
+            >
+              <Icon name={mainConfig.links.linkedin.icon} />
+              <span class:list={["text-lg", "inline md:hidden"]}>
+                Connect with us!
+              </span>
+              <span class:list={["text-lg", "hidden lg:inline"]}>Connect!</span>
+              <span class:list={["text-lg", "hidden md:inline lg:hidden"]}>
+                Connect with us on LinkedIn
+              </span>
+            </Button>
+          </a>
+        </div>
+      </CardFooter>
+    </Card>
+  </div>
+
+  <SectionPadding class:list={["col-[content]"]} />
+</section>
+
+<!-- <div>
+      <img
+        src="/images/logo/pacs_logo.png"
+        alt="PACS Logo"
+        class="w-full h-full object-cover"
+      />
+    </div>
+    <h1 class="block lg:hidden text-4xl font-bold">
+      {mainConfig.shortTitle}
+    </h1>
+    <h1 class="hidden lg:block text-4xl font-bold">{mainConfig.title}</h1>
+    <p>
+      PACS is a provider of blending and manufacturing plant designs, equipment
+      and turnkey projects for oil and gas companies around the world.
+    </p>
+    <p>
+      PACS provides consulting services and industrial innovative engineering
+      solutions.
+    </p>
+    <HeroCarousel data={pageConfig.cards} client:only="react" />
+  </div> -->
+
+<!-- <section
+  class:list={[
+    "col-[fullbleed]",
+    "grid grid-cols-subgrid",
+    "bg-[url(/images/IMG_2304-1.JPEG)] bg-[50%_20%] bg-fixed",
+    "rounded-b-2xl",
+    "shadow-xl",
+    "sm:gap-y-8",
+    "sm:pb-8",
+    className,
+  ]}
+>
+  <div
+    class:list={[
+      "col-[fullbleed] sm:col-[content]",
+      "grid grid-cols-subgrid",
+      "rounded-b-2xl",
+      "bg-card/70 border/40",
+      "px-6 pb-8 gap-y-8 md:gap-y-16",
+      "backdrop-blur-md text-shadow-sm",
+    ]}
+  >
+    <div
+      class:list={[
+        "col-[content] grid grid-cols-subgrid gap-y-4 lg:gap-y-8",
+        "text-center text-xl",
+        "pt-12",
+        "sm:w-[80%]",
+      ]}
+    >
+      <h1 class="block lg:hidden text-4xl font-bold">
+        {mainConfig.shortTitle}
+      </h1>
+      <h1 class="hidden lg:block text-4xl font-bold">{mainConfig.title}</h1>
+      <p>
+        PACS is a provider of blending and manufacturing plant designs,
+        equipment and turnkey projects for oil and gas companies around the
+        world.
+      </p>
+      <p>
+        PACS provides consulting services and industrial innovative engineering
+        solutions.
+      </p>
+    </div>
+
+    <div
+      class:list={[
+        "col-[content]",
+        // "px-4 xl:px-0",
+        // "justify-center",
+        "grid sm:grid-cols-2 gap-8",
+      ]}
+    >
+      <img
+        src="/images/logo/pacs_logo.png"
+        alt="Hero Image"
+        class="w-full h-full object-cover"
+      />
+      <HeroCarousel data={pageConfig.cards} client:only="react" />
+    </div>
+
+    <div
+      class:list={[
+        "col-[content]",
+        "[&>*]:w-full sm:[&>*]:w-auto",
+        "flex flex-col sm:flex-row place-content-center gap-2 sm:gap-4 items-center",
+      ]}
+    >
+      <a href={mainConfig.links.phone.href} class:list={["inline sm:hidden"]}>
+        <Button className="py-6 w-full sm:w-fit" client:only="react">
+          <Icon name={mainConfig.links.phone.icon} />
+          <span class="text-xl">Call Sales</span>
+        </Button>
+      </a>
+      <a href={mainConfig.links.email.href} class:list={["hidden sm:inline"]}>
+        <Button
+          className={cn(
+            "cursor-pointer",
+            "py-6 w-full sm:w-fit",
+            "flex gap-4 sm:gap-2",
+          )}
+          client:only="react"
+        >
+          <Icon name={mainConfig.links.email.icon} />
+          <span class="text-xl inline md:hidden">Talk</span>
+          <span class="text-xl hidden md:inline">Talk to Sales</span>
+        </Button>
+      </a>
+
+      <span class:list={["text-lg", "text-shadow-sm"]}>
+        <span class:list={["break-inside-avoid", "hidden sm:inline"]}>
+          -or-
+        </span>
+      </span>
+
+      <a class:list={[]} href={mainConfig.links.linkedin.href}>
+        <Button
+          className={cn(
+            "cursor-pointer",
+            "py-6 w-full sm:w-fit",
+            "flex gap-4 sm:gap-2",
+          )}
+          client:only="react"
+        >
+          <Icon name={mainConfig.links.linkedin.icon} />
+          <span class="text-xl inline md:hidden">Connect!</span>
+          <span class="text-xl hidden md:inline"> Connect with us! </span>
+          <span class="text-xl hidden"> Connect with us on LinkedIn </span>
+        </Button>
+      </a>
+    </div>
+  </div>
+</section> -->

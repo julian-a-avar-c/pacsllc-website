@@ -1,0 +1,56 @@
+---
+const data = [
+  {
+    imageSource: "/images/IMG_2172.JPEG",
+    angle: "-rotate-z-4",
+    zImage: "z-0",
+    zBackdrop: "z-[1]",
+  },
+  {
+    imageSource: "/images/IMG_2165.JPEG",
+    angle: "-rotate-z-7",
+    zImage: "z-[2]",
+    zBackdrop: "z-[3]",
+  },
+  {
+    imageSource: "/images/IMG_2177.JPEG",
+    angle: "-rotate-z-0",
+    zImage: "z-[4]",
+    zBackdrop: "z-[5]",
+  },
+];
+---
+
+<div
+  class:list={[
+    "w-full h-fit",
+    "grid",
+    "rotate-x-6",
+    "*:row-start-1 *:col-start-1 *:w-full *:row-span-1 *:col-span-1 *:rounded-xl",
+  ]}
+>
+  {
+    data.map((card) => (
+      <>
+        <img
+          alt=""
+          class:list={[
+            "overflow-clip object-cover shadow-md",
+            card.angle,
+            card.zImage,
+          ]}
+          src={card.imageSource}
+        />
+        <div
+          class:list={[
+            "bg-linear-to-t from-zinc-800/70 from-0% via-zinc-600/30 via-10% to-zinc-200/10 to-100%",
+            "xl:backdrop-sepia-[5%] xl:backdrop-grayscale-75 xl:backdrop-saturate-[20%] ring-zinc-800/40 ring-1",
+            "hover:backdrop-sepia-0 hover:backdrop-grayscale-0 hover:backdrop-saturate-100 hover:ring-zinc-800/70",
+            card.angle,
+            card.zBackdrop,
+          ]}
+        />
+      </>
+    ))
+  }
+</div>

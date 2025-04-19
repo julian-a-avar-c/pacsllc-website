@@ -1,0 +1,65 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import StandardFullbleed from "@/layouts/StandardFullbleed.astro";
+
+import mainConfig from "@/config/main";
+import pageConfig from "@/config/pages/about";
+
+import { Icon } from "astro-icon/components";
+import Header from "@/components/layout/Header.astro";
+import { Button } from "@/components/ui/button";
+import Hero from "@/components/section/Hero.astro";
+import SectionPadding from "@/components/section/SectionPadding.astro";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import Halfbleed from "@/components/section/Halfbleed.astro";
+import CardStack from "@/components/page/about/CardStack.astro";
+import People from "@/components/page/about/People.astro";
+import { cn } from "@/lib/utils";
+import { Avatar } from "@/components/my-ui/Avatar.tsx";
+---
+
+<StandardFullbleed>
+  <section
+    class:list={[
+      "grid grid-cols-1 sm:grid-cols-[1fr_2fr] w-[80%] place-self-center",
+      "gap-8 gap-x-32",
+      "col-[content]",
+      "text-xl",
+      "font-atkinson font-medium",
+    ]}
+  >
+    <SectionPadding class="sm:col-[1/-1]" />
+
+    <CardStack class={["col-[1/-1]"]} />
+
+    <div
+      class:list={[
+        "px-4 sm:px-0 flex flex-col gap-4 sm:gap-8 col-[1/-1] lg:col-[2/-1]",
+      ]}
+    >
+      <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
+        Who we are
+      </h1>
+      <Separator className="w-[50%] sm:w-full" />
+      <div
+        class:list={[
+          "[&>p]:py-2 [&>p]:first:pb-4 [&>p]:last:pt-4 columns-1 xl:columns-2",
+        ]}
+      >
+        {pageConfig.whoWeAre.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+      <div class:list={[" text-right"]}>&mdash; Pablo Garce, President</div>
+    </div>
+  </section>
+
+  <People />
+</StandardFullbleed>

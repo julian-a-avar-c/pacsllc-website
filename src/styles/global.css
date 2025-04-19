@@ -4,6 +4,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-atkinson: "Atkinson Hyperlegible";
+  --font-lato: "Lato";
+  --font-gentium: "Gentium Book Plus";
+  --font-montserrat: "Montserrat";
+  --font-manrope: "Manrope";
+  --font-opensans: "Open Sans Variable";
+  --font-inter: "Inter Variable";
+  --font-lexend: "Lexend Variable";
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
