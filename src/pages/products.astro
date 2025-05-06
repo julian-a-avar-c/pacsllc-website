@@ -27,7 +27,7 @@ import SectionPadding from "@/components/section/SectionPadding.astro";
     <SectionPadding />
     <div class:list={["grid", "lg:grid-cols-2", "gap-4"]}>
       {
-        pageConfig.products.liquidLubricants.map((product) => (
+        pageConfig.products.liquidLubricants.items.map((product) => (
           <Card>
             <CardHeader>
               <CardTitle>{product.title}</CardTitle>
@@ -50,7 +50,7 @@ import SectionPadding from "@/components/section/SectionPadding.astro";
     <SectionPadding />
     <div class:list={["grid", "lg:grid-cols-2", "gap-4"]}>
       {
-        pageConfig.products.greases.map((product) => (
+        pageConfig.products.greases.items.map((product) => (
           <Card>
             <CardHeader>
               <CardTitle>{product.title}</CardTitle>

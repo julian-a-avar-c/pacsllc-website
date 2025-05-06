@@ -52,7 +52,7 @@ import Content from "@/components/section/Content.astro";
       }}
       title="Innovative solutions for complex energy problems"
       description="Our team is cost effective, providing analysis of investment and custom solutions."
-      list={{ items: mainConfig.nav.services }}
+      list={{ items: mainConfig.nav.services.items }}
     />
 
     <TriBrutal>
@@ -102,7 +102,7 @@ import Content from "@/components/section/Content.astro";
       title="Liquid Lubricants"
       description="PACS delivers modular automation and logistics solutions engineered to slash energy spend, optimize labor, and adapt seamlessly to shifting demands. Built for agile industries: scalable, portable, and operator-free."
       list={{
-        items: mainConfig.nav.products.liquidLubricants.map((item) => ({
+        items: mainConfig.nav.products.liquidLubricants.items.map((item) => ({
           icon: "fa6-solid:chevron-right",
           ...item,
         })),
@@ -117,7 +117,7 @@ import Content from "@/components/section/Content.astro";
       title="Grease Industry"
       description="PACS delivers modular automation and logistics solutions engineered to slash energy spend, optimize labor, and adapt seamlessly to shifting demands. Built for agile industries: scalable, portable, and operator-free."
       list={{
-        items: mainConfig.nav.products.greases.map((item) => ({
+        items: mainConfig.nav.products.greases.items.map((item) => ({
           icon: "fa6-solid:chevron-right",
           ...item,
         })),

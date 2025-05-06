@@ -48,7 +48,7 @@ export default {
     title: "Services",
     description:
       "Distinctio fugiat dolor, nesciunt pariatur excepturi consectetur consequatur ipsum eum, eius quos perspiciatis ex nisi laudantium. Optio deleniti mollitia molestiae.\nSimilique natus sed tempora rerum deleniti mollitia dicta doloribus quo.",
-    items: mainConfig.nav.services.map((service) => ({
+    items: mainConfig.nav.services.items.map((service) => ({
       ...service,
       icon: "fa6-solid:angle-right",
     })),
@@ -70,8 +70,8 @@ export default {
     description: `<p>PACS delivers modular automation and logistics solutions engineered to slash energy spend, optimize labor, and adapt seamlessly to shifting demands. Built for agile industries: scalable, portable, and operator-free.</p>
         <p><em>Automation simplified. Productivity amplified.</em><p>`,
     items: [
-      ...mainConfig.nav.products.liquidLubricants,
-      ...mainConfig.nav.products.greases,
+      ...mainConfig.nav.products.liquidLubricants.items,
+      ...mainConfig.nav.products.greases.items,
     ].map((service) => ({
       ...service,
       icon: "fa6-solid:angle-right",

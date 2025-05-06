@@ -73,13 +73,14 @@ export function HeaderNav({ class: className }: HeaderNavProps) {
             >
               <div>
                 <ListItem
-                  key={"Liquid Lubricants"}
-                  title={"Liquid Lubricants"}
-                  href={"/liquid-lubricants"}
+                  title={mainConfig.nav.products.liquidLubricants.item.title}
+                  href={mainConfig.nav.products.liquidLubricants.item.href}
                   titleClass="font-bold uppercase"
-                />
+                >
+                  {mainConfig.nav.products.liquidLubricants.item.shortDescription}
+                </ListItem>
                 <>
-                  {mainConfig.nav.products.liquidLubricants.map((component) => (
+                  {mainConfig.nav.products.liquidLubricants.items.map((component) => (
                     <ListItem
                       key={`top-nav-products-liquid-lubricants-${component.key}`}
                       title={component.title}
@@ -93,13 +94,14 @@ export function HeaderNav({ class: className }: HeaderNavProps) {
               <Separator orientation="vertical" />
               <div>
                 <ListItem
-                  key={"Greases"}
-                  title={"Greases"}
-                  href={"/greases"}
+                  title={mainConfig.nav.products.greases.item.title}
+                  href={mainConfig.nav.products.greases.item.href}
                   titleClass="font-bold uppercase"
-                />
+                >
+                  {mainConfig.nav.products.greases.item.shortDescription}
+                </ListItem>
                 <>
-                  {mainConfig.nav.products.greases.map((component) => (
+                  {mainConfig.nav.products.greases.items.map((component) => (
                     <ListItem
                       key={`top-nav-products-greases-${component.key}`}
                       title={component.title}
@@ -135,7 +137,7 @@ export function HeaderNav({ class: className }: HeaderNavProps) {
                 Explore all our services
               </ListItem>
               <Separator className="col-[1/-1]" />
-              {mainConfig.nav.services.map((component) => (
+              {mainConfig.nav.services.items.map((component) => (
                 <ListItem
                   key={`top-nav-services-${component.key}`}
                   title={component.title}
