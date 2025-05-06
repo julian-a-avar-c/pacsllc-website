@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function* intersperse<A, B>(
+export function* intersperseGenerator<A, B>(
   array: A[],
   delim: (prev: A, index?: number, array?: A[]) => B
 ) {
@@ -22,4 +22,11 @@ export function* intersperse<A, B>(
     yield a;
     index += 1;
   }
+}
+
+export function intersperse<A, B>(
+  array: A[],
+  delim: (prev: A, index?: number, array?: A[]) => B
+): (A | B)[] {
+  return Array.from(intersperseGenerator(array, delim));
 }
