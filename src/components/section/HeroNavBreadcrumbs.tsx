@@ -31,30 +31,27 @@ export function HeroNavBreadcrumbs({
   return (
     <Breadcrumb className={className}>
       <BreadcrumbList>
-        {[
-          ...intersperse(
-            items.map(({ href, node }, index) => {
-              if (href) {
-                return (
-                  <BreadcrumbItem key={`breadcrumb-${itemKey}-${index}`}>
-                    <BreadcrumbLink href={href}>{node}?</BreadcrumbLink>
-                  </BreadcrumbItem>
-                );
-              } else {
-                return (
-                  <BreadcrumbItem key={`breadcrumb-${itemKey}-${index}`}>
-                    <BreadcrumbPage>{node}</BreadcrumbPage>
-                  </BreadcrumbItem>
-                );
-              }
-            }),
-            ({ key }, index) => (
+        {
+          intersperse(
+            items.map(({ href, node }, index) =>
+              href ? (
+                <BreadcrumbItem key={`breadcrumb-${itemKey}-${index}`}>
+                  <BreadcrumbLink href={href}>{node}</BreadcrumbLink>
+                </BreadcrumbItem>
+              ) : (
+                <BreadcrumbItem key={`breadcrumb-${itemKey}-${index}`}>
+                  <BreadcrumbPage>{node}</BreadcrumbPage>
+                </BreadcrumbItem>
+              )
+            ),
+            (prev, index) => (
+              // "-"
               <BreadcrumbSeparator
-                key={`breadcrumb-separator-${key}-${index}`}
+                key={`breadcrumb-separator-${itemKey}-${index}`}
               />
             )
-          ),
-        ]}
+          )
+        }
 
         {/* <BreadcrumbItem>
           <BreadcrumbLink href="/">PACS LLC</BreadcrumbLink>
