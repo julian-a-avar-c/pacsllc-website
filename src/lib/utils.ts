@@ -7,11 +7,19 @@ export function cn(...inputs: ClassValue[]) {
 
 export function* intersperse<A, B>(
   array: A[],
-  delim: (prev: A, index: number) => B,
+  delim: (prev: A, index?: number, array?: A[]) => B
 ) {
+  let prev: A | null = null;
+  let isDelim = false;
   let index = 0;
-  for (const curr of array) {
-    yield delim(curr, index);
-    index++;
+  for (const a of array) {
+    if (isDelim) {
+      yield delim(prev as A, index, array);
+      index += 1;
+    }
+    isDelim = true;
+    prev = a;
+    yield a;
+    index += 1;
   }
 }
