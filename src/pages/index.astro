@@ -25,6 +25,8 @@ import TriBrutal from "@/components/section/TriBrutal.astro";
 import SectionPadding from "@/components/section/SectionPadding.astro";
 import HalfAndHalf from "@/components/section/HalfAndHalf.astro";
 import Fullbleed from "@/components/section/Fullbleed.astro";
+import { Input } from "@/components/ui/input";
+import Content from "@/components/section/Content.astro";
 ---
 
 <Layout
@@ -122,7 +124,7 @@ import Fullbleed from "@/components/section/Fullbleed.astro";
       }}
       reverse={true}
     />
-    <Fullbleed
+    <!-- <Fullbleed
       class={cn("flex flex-col lg:grid lg:grid-cols-5 2xl:grid-cols-7")}
     >
       <aside
@@ -174,7 +176,14 @@ import Fullbleed from "@/components/section/Fullbleed.astro";
           ))
         }
       </div>
-    </Fullbleed>
+    </Fullbleed> -->
   </main>
-  <footer class:list={["px-4 pb-4 pt-2", "col-[fullbleed]", ""]}>f</footer>
+  
+  <SectionPadding/>
+  <!-- <footer class:list={["px-4 pb-4 pt-2", "col-[fullbleed]", "bg-zinc-800"]}>
+    <Content class={cn("col-[content]", "w-full")} contentClass={cn("grid grid-cols-12", "w-full")}>
+      <Input className={cn("col-[8/-2]")} />
+      <Button className={cn("col[12/-1]")} />
+    </Content>
+  </footer> -->
 </Layout>

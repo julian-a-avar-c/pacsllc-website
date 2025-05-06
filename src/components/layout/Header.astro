@@ -26,7 +26,8 @@ const { class: className } = Astro.props;
       "text-sm",
       "hidden sm:grid",
     )}
-    containerClass={cn("gap-4", "relative")}
+    contentClass={cn("gap-4", "relative", 
+      "flex flex-col lg:flex-row justify-between items-center",)}
   >
     <h1
       class:list={["font-extrabold uppercase", "sticky top-0", "text-center"]}
