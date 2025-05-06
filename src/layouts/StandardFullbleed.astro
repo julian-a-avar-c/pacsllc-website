@@ -2,26 +2,10 @@
 import Layout from "@/layouts/Layout.astro";
 
 import mainConfig from "@/config/main";
-import pageConfig from "@/config/pages/about";
 
-import { Icon } from "astro-icon/components";
 import Header from "@/components/layout/Header.astro";
-import { Button } from "@/components/ui/button";
 import Hero from "@/components/section/Hero.astro";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import Halfbleed from "@/components/section/Halfbleed.astro";
-import CardStack from "@/components/page/about/CardStack.astro";
-import { cn } from "@/lib/utils";
-import { Avatar } from "@/components/my-ui/Avatar.tsx";
 ---
 
 <Layout title={mainConfig.shortTitle} class="w-full grid-rows-[auto_8px_auto]">
