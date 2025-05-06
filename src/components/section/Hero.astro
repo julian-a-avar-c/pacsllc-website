@@ -10,11 +10,12 @@ import type { ReactNode } from "node_modules/react-resizable-panels/dist/declara
 import { cn } from "@/lib/utils";
 
 type Props = {
+  key: string;
   title: string;
   nav: { href?: string; node: ReactNode }[];
   class?: string;
 };
-const { title, nav, class: className } = Astro.props;
+const { key, title, nav, class: className } = Astro.props;
 ---
 
 <section
@@ -40,7 +41,7 @@ const { title, nav, class: className } = Astro.props;
     </h1>
 
     <HeroNavBreadcrumbs
-      itemKey={title.split(" ").join("-")}
+      itemKey={key}
       items={nav}
       className="text-xl"
       client:only="react"

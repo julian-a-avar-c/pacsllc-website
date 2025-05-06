@@ -2,27 +2,50 @@
 import Layout from "@/layouts/Layout.astro";
 
 import config from "@/config/main";
-import pageConfig from "@/config/pages/index";
+import pageConfig from "@/config/pages/services";
 
 import Header from "@/components/layout/Header.astro";
 import Hero from "@/components/section/Hero.astro";
 import { cn } from "@/lib/utils";
+import StandardFullbleed from "@/layouts/StandardFullbleed.astro";
+import SectionPadding from "@/components/section/SectionPadding.astro";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 ---
 
-<Layout title={config.shortTitle} class="w-full grid-rows-[auto_8px_auto]">
-  <Header class="row-[1/3] z-10" />
-  <main
-    class={cn(
-      "col-[fullbleed] row-[2/4]",
-      "grid grid-cols-subgrid",
-      "relative",
-      )}
-  >
-    <div class="w-full h-[8px]"></div>
-    <Hero
-      title="Services"
-      nav={[{ node: "PACS LLC", href: "/" }, { node: "Services" }]}
-    />
-  </main>
-  <footer class={cn("px-4 pb-4 pt-2", "col-[fullbleed]", "")}>f</footer>
-</Layout>
+<StandardFullbleed
+  key="services"
+  title="Services"
+  nav={[{ node: "PACS LLC", href: "/" }, { node: "Services" }]}
+>
+  <section class={cn("col-[content]", "flex flex-col")}>
+    <SectionPadding />
+    <h1 class={cn("text-4xl", "font-bold", "text-center")}>Services</h1>
+    <SectionPadding />
+    <div class={cn("grid", "lg:grid-cols-2", "gap-4")}>
+      {
+        pageConfig.services.items.map((service) => (
+          <Card>
+            <CardHeader>
+              <CardTitle>{service.title}</CardTitle>
+              <CardDescription>{service.shortDescription}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p>{service.mediumDescription}</p>
+            </CardContent>
+            <CardFooter>
+              <Button variant="outline">Learn More</Button>
+            </CardFooter>
+          </Card>
+        ))
+      }
+    </div>
+  </section>
+</StandardFullbleed>

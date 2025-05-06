@@ -19,7 +19,11 @@ import SectionPadding from "@/components/section/SectionPadding.astro";
 import { cn } from "@/lib/utils";
 ---
 
-<StandardFullbleed>
+<StandardFullbleed
+  key="products"
+  title="Products"
+  nav={[{ node: "PACS LLC", href: "/" }, { node: "Products" }]}
+>
   <section class={cn("col-[content]", "flex flex-col")}>
     <SectionPadding />
     <h1 class={cn("text-4xl", "font-bold", "text-center")}>

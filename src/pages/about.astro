@@ -13,7 +13,11 @@ import People from "@/components/page/about/People.astro";
 import { cn } from "@/lib/utils";
 ---
 
-<StandardFullbleed>
+<StandardFullbleed
+  key="about"
+  title="About"
+  nav={[{ node: "PACS LLC", href: "/" }, { node: "About" }]}
+>
   <section
     class={cn(
       "grid grid-cols-1 sm:grid-cols-[1fr_2fr] w-[80%] place-self-center",
@@ -29,7 +33,7 @@ import { cn } from "@/lib/utils";
 
     <div
       class={cn(
-        "px-4 sm:px-0 flex flex-col gap-4 sm:gap-8 col-[1/-1] lg:col-[2/-1]",
+        "px-4 sm:px-0 flex flex-col gap-4 sm:gap-8 col-[1/-1] lg:col-[2/-1]"
       )}
     >
       <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center">
@@ -38,7 +42,7 @@ import { cn } from "@/lib/utils";
       <Separator className="w-[50%] sm:w-full" />
       <div
         class={cn(
-          "[&>p]:py-2 [&>p]:first:pb-4 [&>p]:last:pt-4 columns-1 xl:columns-2",
+          "[&>p]:py-2 [&>p]:first:pb-4 [&>p]:last:pt-4 columns-1 xl:columns-2"
         )}
       >
         {pageConfig.whoWeAre.map((paragraph) => <p>{paragraph}</p>)}
