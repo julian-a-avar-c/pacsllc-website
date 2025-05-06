@@ -5,17 +5,18 @@ import mainConfig from "@/config/main";
 
 import Header from "@/components/layout/Header.astro";
 import Hero from "@/components/section/Hero.astro";
+import { cn } from "@/lib/utils";
 
 ---
 
 <Layout title={mainConfig.shortTitle} class="w-full grid-rows-[auto_8px_auto]">
   <Header class="row-[1/3] z-10" />
   <main
-    class:list={[
+    class={cn(
       "col-[fullbleed] row-[2/4]",
       "grid grid-cols-subgrid",
       "relative",
-    ]}
+      )}
   >
     <div class="w-full h-[8px]"></div>
     <Hero
@@ -24,5 +25,5 @@ import Hero from "@/components/section/Hero.astro";
     />
     <slot />
   </main>
-  <footer class:list={["px-4 pb-4 pt-2", "col-[fullbleed]", ""]}>f</footer>
+  <footer class={cn("px-4 pb-4 pt-2", "col-[fullbleed]", "")}>f</footer>
 </Layout>

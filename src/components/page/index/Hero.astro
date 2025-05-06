@@ -27,24 +27,24 @@ const { class: className } = Astro.props;
 ---
 
 <section
-  class:list={[
+  class={cn(
     "col-[fullbleed]",
     "grid grid-cols-subgrid",
     "min-h-screen",
     // "bg-[url(/images/IMG_2304-1.JPEG)] bg-[50%_20%] bg-fixed bg-cover",
     "bg-[url(/images/IMG_2252.JPEG)] bg-[50%_20%] bg-fixed bg-cover",
     "static",
-  ]}
+  )}
 >
-  <SectionPadding class:list={["col-[content]"]} />
+  <SectionPadding class={cn("col-[content]")} />
 
   <div
-    class:list={[
+    class={cn(
       "col-[content]",
       "w-full",
       "grid lg:grid-cols-8 xl:grid-cols-9",
       "static",
-    ]}
+    )}
   >
     <Card
       className={cn(
@@ -61,7 +61,7 @@ const { class: className } = Astro.props;
           <img
             src="/images/logo/pacs_logo.png"
             alt="PACS Logo"
-            class:list={["w-full h-full object-cover", "relative -left-1"]}
+            class={cn("w-full h-full object-cover", "relative -left-1")}
           />
         </CardTitle>
 
@@ -73,11 +73,11 @@ const { class: className } = Astro.props;
             "gap-y-4",
           )}
         >
-          <p class:list={["text-lg sm:text-xl lg:text-sm", "col-[1/10]"]}>
+          <p class={cn("text-lg sm:text-xl lg:text-sm", "col-[1/10]")}>
             PACS provides consulting services and industrial innovative
             engineering solutions.
           </p>
-          <p class:list={["text-lg sm:text-xl lg:text-sm", "col-[1/-1]"]}>
+          <p class={cn("text-lg sm:text-xl lg:text-sm", "col-[1/-1]")}>
             PACS is a provider of blending and manufacturing plant designs,
             equipment and turnkey projects for oil and gas companies around the
             world.
@@ -93,56 +93,56 @@ const { class: className } = Astro.props;
 
       <CardFooter className={cn("flex-col", "gap-16")}>
         <div
-          class:list={[
+          class={cn(
             "flex",
             "flex-col sm:flex-row xl:flex-col",
             "gap-4",
             "justify-stretch sm:justify-between",
             "w-full",
-          ]}
+          )}
         >
           <a
             href={mainConfig.links.phone.href}
-            class:list={["inline sm:hidden"]}
+            class={cn("inline sm:hidden")}
           >
             <Button className={cn("w-full", "py-8")} client:only="react">
               <Icon name={mainConfig.links.phone.icon} />
-              <span class:list={["text-lg"]}>Call Sales</span>
+              <span class={cn("text-lg")}>Call Sales</span>
             </Button>
           </a>
 
           <a
             href={mainConfig.links.email.href}
-            class:list={["hidden sm:inline"]}
+            class={cn("hidden sm:inline")}
           >
             <Button
               className={cn("w-full", "px-6 py-8 lg:py-6")}
               client:only="react"
             >
               <Icon name={mainConfig.links.email.icon} />
-              <span class:list={["text-lg", "hidden lg:inline 2xl:hidden"]}
+              <span class={cn("text-lg", "hidden lg:inline 2xl:hidden")}
                 >Talk</span
               >
               <span
-                class:list={[
+                class={cn(
                   "text-lg",
                   "hidden sm:inline lg:hidden 2xl:inline",
-                ]}>Talk to Sales</span
+                )}>Talk to Sales</span
               >
             </Button>
           </a>
 
-          <a class:list={[]} href={mainConfig.links.linkedin.href}>
+          <a class={cn()} href={mainConfig.links.linkedin.href}>
             <Button
               className={cn("w-full", "py-8 sm:px-6 lg:py-6")}
               client:only="react"
             >
               <Icon name={mainConfig.links.linkedin.icon} />
-              <span class:list={["text-lg", "inline md:hidden"]}>
+              <span class={cn("text-lg", "inline md:hidden")}>
                 Connect with us!
               </span>
-              <span class:list={["text-lg", "hidden lg:inline"]}>Connect!</span>
-              <span class:list={["text-lg", "hidden md:inline lg:hidden"]}>
+              <span class={cn("text-lg", "hidden lg:inline")}>Connect!</span>
+              <span class={cn("text-lg", "hidden md:inline lg:hidden")}>
                 Connect with us on LinkedIn
               </span>
             </Button>
@@ -152,7 +152,7 @@ const { class: className } = Astro.props;
     </Card>
   </div>
 
-  <SectionPadding class:list={["col-[content]"]} />
+  <SectionPadding class={cn("col-[content]")} />
 </section>
 
 <!-- <div>
@@ -178,7 +178,7 @@ const { class: className } = Astro.props;
   </div> -->
 
 <!-- <section
-  class:list={[
+  class={cn(
     "col-[fullbleed]",
     "grid grid-cols-subgrid",
     "bg-[url(/images/IMG_2304-1.JPEG)] bg-[50%_20%] bg-fixed",
@@ -187,20 +187,20 @@ const { class: className } = Astro.props;
     "sm:gap-y-8",
     "sm:pb-8",
     className,
-  ]}
+  )}
 >
   <div
-    class:list={[
+    class={cn(
       "col-[fullbleed] sm:col-[content]",
       "grid grid-cols-subgrid",
       "rounded-b-2xl",
       "bg-card/70 border/40",
       "px-6 pb-8 gap-y-8 md:gap-y-16",
       "backdrop-blur-md text-shadow-sm",
-    ]}
+    )}
   >
     <div
-      class:list={[
+      class={cn(
         "col-[content] grid grid-cols-subgrid gap-y-4 lg:gap-y-8",
         "text-center text-xl",
         "pt-12",
@@ -223,7 +223,7 @@ const { class: className } = Astro.props;
     </div>
 
     <div
-      class:list={[
+      class={cn(
         "col-[content]",
         // "px-4 xl:px-0",
         // "justify-center",
@@ -239,19 +239,19 @@ const { class: className } = Astro.props;
     </div>
 
     <div
-      class:list={[
+      class={cn(
         "col-[content]",
         "[&>*]:w-full sm:[&>*]:w-auto",
         "flex flex-col sm:flex-row place-content-center gap-2 sm:gap-4 items-center",
       ]}
     >
-      <a href={mainConfig.links.phone.href} class:list={["inline sm:hidden"]}>
+      <a href={mainConfig.links.phone.href} class={cn("inline sm:hidden"]}>
         <Button className="py-6 w-full sm:w-fit" client:only="react">
           <Icon name={mainConfig.links.phone.icon} />
           <span class="text-xl">Call Sales</span>
         </Button>
       </a>
-      <a href={mainConfig.links.email.href} class:list={["hidden sm:inline"]}>
+      <a href={mainConfig.links.email.href} class={cn("hidden sm:inline"]}>
         <Button
           className={cn(
             "cursor-pointer",
@@ -266,13 +266,13 @@ const { class: className } = Astro.props;
         </Button>
       </a>
 
-      <span class:list={["text-lg", "text-shadow-sm"]}>
-        <span class:list={["break-inside-avoid", "hidden sm:inline"]}>
+      <span class={cn("text-lg", "text-shadow-sm"]}>
+        <span class={cn("break-inside-avoid", "hidden sm:inline"]}>
           -or-
         </span>
       </span>
 
-      <a class:list={[]} href={mainConfig.links.linkedin.href}>
+      <a class={cn(]} href={mainConfig.links.linkedin.href}>
         <Button
           className={cn(
             "cursor-pointer",

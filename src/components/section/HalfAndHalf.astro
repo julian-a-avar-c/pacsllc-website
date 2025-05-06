@@ -22,6 +22,7 @@ import Halfbleed from "@/components/section/Halfbleed.astro";
 import SectionPadding from "@/components/section/SectionPadding.astro";
 import { Accordion } from "@/components/my-ui/accordion";
 import type { Item } from "@/config/pages/products";
+import { cn } from "@/lib/utils";
 
 type Props = {
   reverse?: boolean;
@@ -50,14 +51,14 @@ const {
 ---
 
 <section
-  class:list={[
+  class={cn(
     "grid grid-cols-2",
     // pt-8 sm:pt-16 lg:pt-24 2xl:pt-32
     "gap-8 sm:gap-16 lg:gap-20 2xl:gap-24",
     "col-[content]",
     "text-xl",
     className,
-  ]}
+  )}
 >
   <SectionPadding class="col-[1/-1]" />
   <!-- <p class="text-center font-bold uppercase col-[1/-1]">
@@ -66,13 +67,13 @@ const {
   <img
     alt={image.alt}
     src={image.src}
-    class:list={[
+    class={cn(
       "shadow-lg",
       "col-[1/-1] lg:col-[1/2]",
       "aspect-video w-full object-cover",
       "sm:rounded-lg",
       image.className,
-    ]}
+    )}
   />
   <div
     class="px-4 sm:px-0 flex flex-col gap-4 sm:gap-8 col-[1/-1] lg:col-[2/-1]"
@@ -85,13 +86,13 @@ const {
       {description}
     </p>
     <ul
-      class:list={[
+      class={cn(
         "[&>li]:grid [&>li]:grid-cols-[min-content_1fr] [&>li]:items-center [&>li]:gap-6",
         "sm:[&>li]:gap-4",
         "[&>li>*]:first:text-3xl",
         "flex gap-2 flex-col",
         "font-bold",
-      ]}
+      )}
     >
       {
         // list.items.map((item) => (

@@ -7,6 +7,7 @@ import pageConfig from "@/config/pages/index";
 import { HeroNavBreadcrumbs } from "@/components/section/HeroNavBreadcrumbs";
 
 import type { ReactNode } from "node_modules/react-resizable-panels/dist/declarations/src/vendor/react";
+import { cn } from "@/lib/utils";
 
 type Props = {
   title: string;
@@ -17,24 +18,24 @@ const { title, nav, class: className } = Astro.props;
 ---
 
 <section
-  class:list={[
+  class={cn(
     "col-[fullbleed]",
     "grid grid-cols-subgrid lg:gap-8",
     "bg-[url(/images/IMG_2252.JPEG)] bg-[50%_20%] sm:bg-[50%_10%] 2xl:bg-[50%_0%] bg-fixed",
     className,
-  ]}
+  )}
 >
   <div
-    class:list={[
+    class={cn(
       "col-[content]",
       "flex flex-col",
       "lg:gap-4 xl:gap-8",
       "py-8 sm:py-16 xl:py-24 2xl:py-32",
       "bg-background/10 backdrop-blur-sm",
       "items-center justify-items-center",
-    ]}
+    )}
   >
-    <h1 class:list={["font-bold", "text-5xl sm:4xl md:text-5xl 2xl:text-6xl"]}>
+    <h1 class={cn("font-bold", "text-5xl sm:4xl md:text-5xl 2xl:text-6xl")}>
       {title}
     </h1>
 

@@ -1,4 +1,6 @@
 ---
+import { cn } from "@/lib/utils";
+
 const data = [
   {
     imageSource: "/images/IMG_2172.JPEG",
@@ -22,33 +24,33 @@ const data = [
 ---
 
 <div
-  class:list={[
+  class={cn(
     "w-full h-fit",
     "grid",
     "rotate-x-6",
     "*:row-start-1 *:col-start-1 *:w-full *:row-span-1 *:col-span-1 *:rounded-xl",
-  ]}
+  )}
 >
   {
     data.map((card) => (
       <>
         <img
           alt=""
-          class:list={[
+          class={cn(
             "overflow-clip object-cover shadow-md",
             card.angle,
             card.zImage,
-          ]}
+          )}
           src={card.imageSource}
         />
         <div
-          class:list={[
+          class={cn(
             "bg-linear-to-t from-zinc-800/70 from-0% via-zinc-600/30 via-10% to-zinc-200/10 to-100%",
             "xl:backdrop-sepia-[5%] xl:backdrop-grayscale-75 xl:backdrop-saturate-[20%] ring-zinc-800/40 ring-1",
             "hover:backdrop-sepia-0 hover:backdrop-grayscale-0 hover:backdrop-saturate-100 hover:ring-zinc-800/70",
             card.angle,
             card.zBackdrop,
-          ]}
+          )}
         />
       </>
     ))

@@ -45,6 +45,7 @@ import "@fontsource-variable/lexend";
 
 import "@/styles/global.css";
 import config from "@/config/main";
+import { cn } from "@/lib/utils";
 
 type Props = {
   title: string;
@@ -68,7 +69,7 @@ const documentTitle =
     <meta name="generator" content={Astro.generator} />
     <title>{documentTitle}</title>
   </head>
-  <body class:list={["bg-background font-lexend", className]}>
+  <body class={cn("bg-background font-lexend", className)}>
     <slot />
   </body>
 </html>

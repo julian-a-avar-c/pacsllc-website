@@ -17,7 +17,7 @@ const { class: className } = Astro.props;
 ---
 
 <header
-  class:list={["col-[fullbleed] grid grid-cols-subgrid", "static", className]}
+  class={cn("col-[fullbleed] grid grid-cols-subgrid", "static", className)}
 >
   <Content
     class={cn(
@@ -30,17 +30,17 @@ const { class: className } = Astro.props;
       "flex flex-col lg:flex-row justify-between items-center",)}
   >
     <h1
-      class:list={["font-extrabold uppercase", "sticky top-0", "text-center"]}
+      class={cn("font-extrabold uppercase", "sticky top-0", "text-center")}
     >
       {mainConfig.title}
     </h1>
     <address class="not-italic static">
       <ul
-        class:list={[
+        class={cn(
           "hidden",
           "font-bold",
           "sm:flex flex-col sm:flex-row gap-y-2 gap-x-4 items-center",
-        ]}
+        )}
       >
         {
           Object.entries(mainConfig.links)
@@ -55,10 +55,10 @@ const { class: className } = Astro.props;
                   <li>
                     <a
                       href={link.href}
-                      class:list={[
+                      class={cn(
                         "flex gap-1 items-center",
                         "hover:underline",
-                      ]}
+                        )}
                     >
                       <Icon name={link.icon} />
                       {link.value}
@@ -80,7 +80,7 @@ const { class: className } = Astro.props;
   </Content>
 
   <section
-    class:list={[
+    class={cn(
       "py-4",
       "col-[fullbleed]",
       "grid grid-cols-subgrid",
@@ -88,15 +88,15 @@ const { class: className } = Astro.props;
       "bg-card/20 backdrop-blur-xl backdrop-brightness-[100%] backdrop-grayscale-[20%]",
       "rounded-b-xl",
       "shadow-lg",
-    ]}
+      )}
   >
     <div
-      class:list={[
+      class={cn(
         "col-[content]",
         "flex items-stretch justify-between gap-y-2 gap-x-4",
         "bg-transparent",
         "pr-4 sm:px-0",
-      ]}
+        )}
     >
       <a class="flex gap-4 lg:gap-8 2xl:gap-4 items-center" href="/">
         <div class="flex gap-4 [&>*]:h-fit items-center">
