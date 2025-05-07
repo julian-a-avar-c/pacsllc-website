@@ -21,7 +21,7 @@ type Config = Page & {
   };
 };
 
-export default {
+export const config: Config = {
   name: "index",
   href: "/",
   cards: [
@@ -77,4 +77,4 @@ export default {
       icon: "fa6-solid:angle-right",
     })),
   },
-} satisfies Config;
+};

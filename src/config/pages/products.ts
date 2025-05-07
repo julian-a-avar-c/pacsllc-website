@@ -7,7 +7,7 @@ export type Item = {
   href: string;
 };
 
-const pageConfig: {
+export const config: {
   products: {
     liquidLubricants: {
       item: Item;
@@ -182,5 +182,3 @@ const pageConfig: {
     },
   },
 };
-
-export default pageConfig;

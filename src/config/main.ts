@@ -1,5 +1,5 @@
-import productsConfig from "@/config/pages/products";
-import servicesConfig from "@/config/pages/services";
+import { config as productsConfig } from "@/config/pages/products";
+import { config as servicesConfig } from "@/config/pages/services";
 
 export type Card = {
   icon: string | null;

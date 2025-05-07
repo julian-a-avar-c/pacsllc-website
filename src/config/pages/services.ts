@@ -1,7 +1,7 @@
 import type { Item } from "@/config/pages/products";
 import { Meh } from "lucide-react";
 
-const pageConfig: {
+export const config: {
   services: {
     item: Item;
     items: Item[];
@@ -146,5 +146,3 @@ const pageConfig: {
     ],
   },
 };
-
-export default pageConfig;

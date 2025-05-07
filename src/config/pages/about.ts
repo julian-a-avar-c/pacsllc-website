@@ -1,6 +1,6 @@
 import mainConfig from "@/config/main";
 
-const config = {
+export const config = {
   whoWeAre: [
     "At PACS LLC, we specialize in engineering innovative technological solutions for the liquid lubricants, grease, paints, and inks industries.",
     "We design and deliver automated, intelligent systems for component transfer, dosing, manufacturing, and blending. Our solutions include pigging technology, robotic drum decanters, reactors, and custom-built systems — all focused on maximizing operational efficiency and performance.",
@@ -127,5 +127,3 @@ const config = {
     },
   },
 };
-
-export default config;

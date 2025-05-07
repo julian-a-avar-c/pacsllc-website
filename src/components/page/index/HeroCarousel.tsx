@@ -4,7 +4,7 @@ import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 
 import mainConfig from "@/config/main";
-import pageConfig from "@/config/pages/index";
+import { config as pageConfig } from "@/config/pages/index";
 
 import { Icon } from "@iconify/react";
 import {
